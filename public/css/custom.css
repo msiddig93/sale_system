@@ -1,0 +1,158 @@
+    @font-face {
+        font-family: "Roboto";
+        font-style: all;
+        src: url("../fonts/Roboto/Roboto-Black.ttf");
+    }
+    
+    @font-face {
+        font-family: "Cairo";
+        font-style: all;
+        src: url("../fonts/Cairo-Regular.ttf");
+    }
+    
+    body {
+        direction: rtl;
+        text-align: right;
+        font-family: "Cairo" !important;
+    }
+    
+    .nav {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
+    
+    .sidebar {
+        box-shadow: 1px 0px 3px 0px #121212;
+        font-family: "Cairo" !important;
+    }
+    
+    .sidebar .nav .nav-item .nav-link {
+        padding: 0.75rem 0.7rem 0.75rem 1.25rem;
+        color: #121212;
+        font-weight: bold;
+    }
+    
+    .sidebar .nav .nav-item .nav-link i.menu-icon {
+        font-size: 1.125rem;
+        line-height: 1;
+        margin-right: 0px;
+        margin-left: 1.125rem;
+        color: inherit;
+    }
+    
+    .sidebar .nav .nav-item .nav-link i.menu-arrow {
+        display: inline-block;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        margin-left: 0px;
+        margin-right: auto;
+        color: #000;
+    }
+    /* re-style the navbar */
+    
+    .navbar .navbar-brand-wrapper {
+        background: #3b3c3e;
+    }
+    
+    .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-toggler {
+        color: #ffffff;
+    }
+    
+    .navbar .navbar-menu-wrapper {
+        background: #3b3c3e;
+        color: #ffffff;
+    }
+    
+    .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link .nav-profile-name {
+        margin-left: .5rem;
+        margin-right: .5rem;
+        color: #ffffff;
+        text-shadow: -2px 2px 1px #000;
+        font-weight: 500;
+    }
+    
+    .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link::after {
+        color: #ffffff;
+        text-shadow: -2px 2px 1px #000;
+    }
+    
+    .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand {
+        color: #ffffff;
+        font-size: 1.5rem;
+        width: 100%;
+        text-align: center;
+        text-shadow: -2px 2px 1px #000;
+    }
+    
+    .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand:active,
+    .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand:focus,
+    .navbar .navbar-brand-wrapper .navbar-brand-inner-wrapper .navbar-brand:hover {
+        color: snow;
+    }
+    
+    .sidebar .nav.sub-menu {
+        margin-bottom: 0;
+        margin-top: 0;
+        list-style: none;
+        padding: 0.25rem 2.55rem 0.6rem 1.55rem;
+    }
+    
+    .table thead th {
+        border-top: 0;
+        border-bottom-width: 1px;
+        font-weight: 500;
+        font-size: 1rem;
+        background: #3b3c3e;
+        color: #ffffff;
+        text-align: center;
+    }
+    
+    .table-bordered thead th,
+    .table-bordered thead td,
+    .table td {
+        text-align: center;
+    }
+    
+    .table td {
+        padding: 0.25rem 0.9375rem;
+    }
+    
+    .form-control {
+        display: block;
+        width: 100%;
+        height: calc(2.19rem + 2px);
+        padding: .375rem .75rem;
+        font-size: .9rem;
+        line-height: 1.6;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+    }
+    
+    @media (max-width: 991px) {
+        .navbar .navbar-brand-wrapper,
+        .navbar .navbar-menu-wrapper {
+            width: 50%;
+        }
+        brand.brand-logo-mini {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .content-wrapper {
+        background: none repeat scroll 0% 0% rgb(243, 243, 243);
+        padding: 0px;
+        padding-top: 15px;
+        width: 100%;
+        flex-grow: 1;
+        margin: 0px;
+    }
