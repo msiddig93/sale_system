@@ -6,6 +6,7 @@ use App\Purchase;
 use App\PurchaseDetail;
 use App\Product;
 use App\vendor;
+use App\Bank;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -101,9 +102,10 @@ class PurchaseController extends Controller
      * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function edit(Purchase $purchase)
+    public function pay($id)
     {
-        //
+        $purchase = Purchase::find($id);
+        return view('purchase_bill.pay',compact('purchase'));
     }
 
     /**
@@ -113,9 +115,38 @@ class PurchaseController extends Controller
      * @param  \App\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Purchase $purchase)
+    public function bank(Request $request, Purchase $purchase)
     {
-        //
+        // return $request->all();
+        if(empty($request->acc_number)){
+            return redirect()->back()->withInput()->with(['error' => "فضلاً قم بإدخال رقم الحساب الذي سوف يتم تحويل قيمة الفاتورة له ."]);            
+        }
+
+        $bank = Bank::where("acc_number","2020202")->first();
+        $vendor = Bank::where("acc_number",$request->acc_number)->first();
+
+        if($bank){
+            if($bank->balance < $request->total_amount){
+                return redirect()->back()->withInput()->with(['error' => "عفواً ,رصيدك لا يكفى لإجرى هذه المعاملة ."]);            
+            }
+
+            $vendor->update([
+                "balance" => $vendor->balance + $request->total_amount
+            ]);
+
+            $bank->update([
+                "balance" => $bank->balance - $request->total_amount
+            ]);
+
+            Purchase::find($request->id)->update([
+                "status" => 1,
+            ]);
+
+            return redirect()->route('purchase.index')->withInput()->with(['success' => "تم سداد عن طريق البنك بنجاح"]);
+
+        }else{
+            return redirect()->back()->withInput()->with(['error' => "لم يتم العثور على رقم حساب مطابق   ."]);
+        }
     }
 
     /**

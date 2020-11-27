@@ -28,6 +28,11 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                @if(Session::has('success'))
+                    <div class="alert alert-success text-center" >
+                        {{Session::get('success')}}
+                    </div>
+                @endif
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-bordered">
                         <thead>
@@ -53,6 +58,9 @@
                                     <td dir="ltr" >{{ $purchase_bill->created_at }}</td>
                                     <td>
                                         <div class="btn-group" role="group" dir="ltr" aria-label="Basic example">
+                                            @if ( $purchase_bill->status == 0)
+                                                <a href="{{ route('purchase.pay',$purchase_bill->id) }}" title="حذف" class="btn btn-success"><i class="mdi mdi-money" ></i>سداد عن طريق البنك</a>                                                
+                                            @endif
                                             <a href="{{ route('purchase.delete',$purchase_bill->id) }}" title="حذف" class="btn btn-danger delete"><i class="mdi mdi-delete-forever" ></i></a>
                                         </div>
                                     </td>

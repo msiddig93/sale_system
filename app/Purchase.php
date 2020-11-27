@@ -10,6 +10,7 @@ class Purchase extends Model
         'vendor_id',
         'user_id',
         'total_amount',
+        'status',
     ];
 
     

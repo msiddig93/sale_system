@@ -80,6 +80,8 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/edit/{id}','PurchaseController@edit')->name('purchase.edit');
         Route::post('/update','PurchaseController@update')->name('purchase.update');    
         Route::get('/delete/{id}','PurchaseController@destroy')->name('purchase.delete');
+        Route::get('/pay-bank/{id}','PurchaseController@pay')->name('purchase.pay');
+        Route::post('/pay-bank','PurchaseController@bank')->name('purchase.bank');
     });
 
     Route::group(['prefix' => 'purchase_detail'], function() {
